@@ -1,0 +1,342 @@
+/* style.css */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: transparent;
+  font-family: "Segoe UI", sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#widget {
+  width: 600px;
+  height: 540px;
+  background: rgba(173,216,230,0.25);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.3s ease;
+}
+
+/* Header */
+#header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-bottom: 8px;
+}
+#title {
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 10px rgba(0,200,255,0.6);
+  margin-bottom: 4px;
+}
+
+/* Toolbar */
+#toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+}
+
+#status {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 13px;
+  color: #e6f7ff;
+  gap: 8px;
+  flex: 1;
+}
+
+#toolbar-buttons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Toolbar buttons */
+#clear-btn {
+  background: rgba(255,140,0,0.2);
+  border: 1px solid rgba(255,140,0,0.3);
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  -webkit-app-region: no-drag;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+#clear-btn:hover {
+  background: rgba(255,140,0,0.3);
+  border-color: rgba(255,140,0,0.5);
+  transform: scale(1.05);
+  box-shadow: 0 0 8px rgba(255,140,0,0.3);
+}
+
+#clear-btn:active {
+  transform: scale(0.95);
+  background: rgba(255,140,0,0.4);
+}
+
+#close-btn {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 6px;
+  color: #ccc;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: all 0.2s ease;
+  -webkit-app-region: no-drag;
+}
+
+#close-btn:hover {
+  background: rgba(255,0,0,0.2);
+  border-color: rgba(255,0,0,0.4);
+  color: #ff6b6b;
+  transform: scale(1.05);
+}
+
+/* mic indicator (fade/pulse) */
+#mic-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #00cfff;
+  box-shadow: 0 0 10px rgba(0,200,255,0.8);
+  animation: pulse 1.4s infinite ease-in-out;
+}
+.listening-paused #mic-indicator {
+  background: #888;
+  box-shadow: none;
+  opacity: 0.5;
+  animation: fade 1.6s infinite ease-in-out;
+}
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.35); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes fade {
+  0% { opacity: 0.25; }
+  50% { opacity: 0.7; }
+  100% { opacity: 0.25; }
+}
+#pause-badge {
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 11px;
+}
+
+#insight-badge {
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(255, 215, 0, 0.2);
+  color: #fff;
+  font-size: 11px;
+  cursor: help;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+#insight-badge:hover {
+  background: rgba(255, 215, 0, 0.3);
+}
+
+#shortcut-info {
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: rgba(0, 255, 127, 0.2);
+  color: #fff;
+  font-size: 10px;
+  cursor: help;
+  border: 1px solid rgba(0, 255, 127, 0.3);
+  font-weight: bold;
+}
+
+#shortcut-info:hover {
+  background: rgba(0, 255, 127, 0.3);
+}
+
+#pause-resume-btn {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  padding: 4px 8px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  -webkit-app-region: no-drag;
+}
+
+#pause-resume-btn:hover {
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.4);
+  transform: scale(1.05);
+}
+
+#pause-resume-btn:active {
+  transform: scale(0.95);
+  background: rgba(255,255,255,0.3);
+}
+
+/* Content split */
+#content {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 10px;
+  flex: 1;
+  min-height: 0; /* allow children to scroll */
+}
+
+section {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+.pane-title {
+  font-size: 13px;
+  letter-spacing: 0.2px;
+  color: #eaf9ff;
+  opacity: 0.9;
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+/* Insights list (left) */
+#insights-list {
+  padding: 10px;
+  color: #fff;
+  font-size: 13px;
+  overflow-y: auto;
+  gap: 6px;
+  display: flex;
+  flex-direction: column;
+}
+.insight-item {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.insight-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  margin-top: 6px;
+  background: #7fe3ff;
+  box-shadow: 0 0 6px rgba(127,227,255,0.8);
+}
+.insight-text { white-space: pre-wrap; }
+
+/* Messages (right) */
+#messages {
+  padding: 10px;
+  flex: 1;
+  overflow-y: auto;
+  font-size: 14px;
+  color: white;
+  user-select: text;
+  -webkit-user-select: text;
+  white-space: pre-wrap;
+}
+.message { margin-bottom: 6px; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Text Input Section */
+#text-input-section {
+  margin: 8px 0 0 0;
+  padding: 0;
+}
+
+.input-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 12px;
+  padding: 8px;
+  backdrop-filter: blur(10px);
+}
+
+#text-input {
+  flex: 1;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  padding: 8px 12px;
+  outline: none;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+#text-input::placeholder {
+  color: rgba(255,255,255,0.6);
+  font-style: italic;
+}
+
+#text-input:focus {
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(0,200,255,0.5);
+  box-shadow: 0 0 10px rgba(0,200,255,0.3);
+}
+
+#send-btn {
+  background: rgba(0,200,255,0.3);
+  border: 1px solid rgba(0,200,255,0.5);
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  padding: 8px 12px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#send-btn:hover {
+  background: rgba(0,200,255,0.5);
+  border-color: rgba(0,200,255,0.7);
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0,200,255,0.4);
+}
+
+#send-btn:active {
+  transform: scale(0.95);
+  background: rgba(0,200,255,0.7);
+}
+
+#send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Removed - Clear button now in toolbar */
+
+/* Drag region rules */
+#header.drag-region { -webkit-app-region: drag; position: relative; }
+#toolbar-buttons { -webkit-app-region: no-drag; }
+#clear-btn { -webkit-app-region: no-drag; }
+#close-btn { -webkit-app-region: no-drag; }

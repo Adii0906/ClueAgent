@@ -1,0 +1,55 @@
+{
+  "name": "cluagent",
+  "version": "2.0.0",
+  "description": "AI Voice Assistant for Meetings and Productivity",
+  "main": "main.js",
+  "homepage": "https://yourdomain.com",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "dist": "electron-builder --publish=never",
+    "dev": "electron . --dev"
+  },
+  "build": {
+    "appId": "com.yourcompany.cluagent",
+    "productName": "CluAgent",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!**/node_modules/**/*",
+      "!src/**/*",
+      "!README.md"
+    ],
+    "extraResources": [
+      {
+        "from": "../backend/",
+        "to": "backend/",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "assets/icon.png"
+    }
+  },
+  "devDependencies": {
+    "electron": "^25.0.0",
+    "electron-builder": "^24.0.0"
+  },
+  "dependencies": {
+    "node-tesseract-ocr": "^2.2.1",
+    "screenshot-desktop": "^1.15.1"
+  }
+}

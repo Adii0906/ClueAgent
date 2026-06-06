@@ -1,0 +1,50 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>CluAgent Overlay</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="widget">
+    <div id="header" class="drag-region">
+      <div id="title">CluAgent</div>
+      <div id="toolbar">
+        <div id="status">
+          <span id="mic-indicator" aria-label="listening"></span>
+          <span id="status-text">Listening...</span>
+          <span id="pause-badge" hidden>Paused</span>
+          <button id="pause-resume-btn" title="Click to pause/resume voice recording (Ctrl+R to listen, Ctrl+P to pause)">🎤</button>
+          <span id="shortcut-info" title="Keyboard Shortcuts: Ctrl+R=Listen, Ctrl+P=Pause & Process">⌨️ Ctrl+R/P</span>
+          <span id="insight-badge" title="Type questions in the text box below for AI assistance">💬 Chat</span>
+        </div>
+        <div id="toolbar-buttons">
+          <button id="clear-btn" title="Clear all messages and commands">🗑️ Clear</button>
+          <button id="close-btn" aria-label="close">✕</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="content">
+      <section id="insights">
+        <div class="pane-title">Live commands</div>
+        <div id="insights-list"></div>
+      </section>
+      <section id="ai">
+        <div class="pane-title">AI response</div>
+        <div id="messages"></div>
+      </section>
+    </div>
+
+    <div id="text-input-section">
+      <div class="input-container">
+        <input type="text" id="text-input" placeholder="Ask AI anything... (Press Enter to send)" maxlength="500">
+        <button id="send-btn" title="Send message to AI">➤</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
